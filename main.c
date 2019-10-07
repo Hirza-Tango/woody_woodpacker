@@ -6,11 +6,12 @@
 /*   By: dslogrov <dslogrove@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 07:00:07 by dslogrov          #+#    #+#             */
-/*   Updated: 2019/10/07 08:59:02 by dslogrov         ###   ########.fr       */
+/*   Updated: 2019/10/07 10:55:59 by dslogrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "woody.h"
+#include <sys/stat.h>
 
 int main(int argc, char *argv[]){
 	int		old_fd, new_fd;
@@ -30,18 +31,18 @@ int main(int argc, char *argv[]){
 		return dprintf(2, "%s: empty file\n", argv[0]);
 	}
 	//TODO: check magic numbers
-	new_fd = open("woody", O_RDWR | O_CREAT);
+	new_fd = open("woody", O_RDWR | O_CREAT, S_IFREG | ACCESSPERMS);
 	if (new_fd == -1){
-		perror(argv[0]);
+		perror("open");
 		return 1;
 	}
-	if ((file = mmap(NULL, file_size, PROT_READ | PROT_WRITE, MAP_PRIVATE, new_fd, 0))
+	if ((file = mmap(NULL, file_size, PROT_READ | PROT_WRITE, MAP_FILE | MAP_PRIVATE, new_fd, 0))
 		== (void *)-1){
-		perror(argv[0]);
+		perror("mmap");
 		return 1;
 	}
 	if (read(old_fd, file, file_size) < 0){
-		perror(argv[0]);
+		perror("read");
 		return 1;
 	}
 	printf("%16s", ((Elf64_Ehdr *)file)->e_ident);
