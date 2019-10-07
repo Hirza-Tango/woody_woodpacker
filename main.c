@@ -6,7 +6,7 @@
 /*   By: dslogrov <dslogrove@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 07:00:07 by dslogrov          #+#    #+#             */
-/*   Updated: 2019/10/07 10:55:59 by dslogrov         ###   ########.fr       */
+/*   Updated: 2019/10/07 11:00:45 by dslogrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int main(int argc, char *argv[]){
 		perror("mmap");
 		return 1;
 	}
-	if (read(old_fd, file, file_size) < 0){
+	if (read(old_fd, file, file_size) <= 0){ // read returns 0?
 		perror("read");
 		return 1;
 	}
