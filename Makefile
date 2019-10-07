@@ -4,11 +4,11 @@ LIBFT_DIR=.
 INCLUDES=$(LIBFT_DIR)/includes
 REL_DEPS= $(DEPS:%=$(LIBFT_DIR)/%)
 CC=gcc
-CFLAGS=-Wall -Wextra -Werror -I . -I $(INCLUDES) -Ofast -std=c18
+CFLAGS=-Wall -Wextra -Werror -I . -I $(INCLUDES) -Ofast -std=c18 -g
 ifdef COMPILER_ARGS
 CFLAGS+= -D$(COMPILER_ARGS)
 endif
-CFILES=
+CFILES= main.c
 
 OBJ=$(CFILES:%.c=build/%.o)
 
