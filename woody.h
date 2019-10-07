@@ -6,7 +6,7 @@
 /*   By: dslogrov <dslogrove@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 07:01:08 by dslogrov          #+#    #+#             */
-/*   Updated: 2019/10/07 09:02:31 by dslogrov         ###   ########.fr       */
+/*   Updated: 2019/10/07 16:03:16 by dslogrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <sys/mman.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <stdlib.h>
 #include "includes/elf.h"
 
 #define USAGE "Usage: %s [file]\n"
