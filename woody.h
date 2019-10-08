@@ -6,7 +6,7 @@
 /*   By: dslogrov <dslogrove@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 07:01:08 by dslogrov          #+#    #+#             */
-/*   Updated: 2019/10/07 16:03:16 by dslogrov         ###   ########.fr       */
+/*   Updated: 2019/10/08 16:41:03 by dslogrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include "includes/elf.h"
+#include "includes/libft.h"
 
 #define USAGE "Usage: %s [file]\n"
 

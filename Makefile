@@ -1,6 +1,6 @@
 NAME=woody_woodpacker
-DEPS=
-LIBFT_DIR=.
+DEPS=libft.a
+LIBFT_DIR=libft
 INCLUDES=$(LIBFT_DIR)/includes
 REL_DEPS= $(DEPS:%=$(LIBFT_DIR)/%)
 CC=gcc
