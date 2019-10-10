@@ -3,7 +3,6 @@
 
 char *string_xor(char *a, char *b, size_t len){
 	for (size_t i = 0; i < len; i++){
-		//printf("%x %x %x\n", a[i], b[i % ft_strlen(b)], a[i] ^ b[i % ft_strlen(b)]);
 		a[i] ^= b[i % ft_strlen(b)];
 	}
 	return a;
@@ -49,4 +48,31 @@ char *decrypt_CBC(char *message, char *iv, size_t block_size, size_t message_siz
 		ft_memcpy(ret + i * block_size, block, block_size);
 	}
 	return ret;
+}
+
+// This is the padding standard for PKCS#7
+char *pad_message(char *message, size_t message_size, unsigned char block_size){
+	unsigned char difference = message_size % block_size;
+	char *buffer;
+
+	if (!difference)
+		difference = block_size;
+	buffer = malloc(message_size + difference);
+	ft_memcpy(buffer, message, message_size);
+	ft_memset(buffer + message_size, difference, difference);
+	return (buffer);
+}
+
+char *strip_message(char *message, size_t message_size){
+	unsigned char difference = message[message_size - 1];
+	char *buffer;
+
+	if (!difference)
+		return (NULL);
+	for (unsigned int i = message_size - 1; i >= message_size - difference; i--)
+		if (message[i] != difference)
+			return (NULL);
+	buffer = malloc(message_size - difference);
+	ft_memcpy(buffer, message, message_size - difference);
+	return (buffer);
 }
